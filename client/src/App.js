@@ -1,15 +1,18 @@
 import "./App.css";
 import { Button, Container } from "react-bootstrap";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+import { Dashboard } from "./pages/Dashboard";
+import { MainLayout } from "./components/layout/MainLayout";
 
 function App() {
   return (
     <div className="App">
-      <Container>
-        <Button className="mt-5" variant="primary">
-          <i class="fa-solid fa-user"></i>
-          Check out
-        </Button>
-      </Container>
+      <MainLayout>
+        <Login />
+        <Register />
+        <Dashboard />
+      </MainLayout>
     </div>
   );
 }
