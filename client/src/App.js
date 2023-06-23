@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <Container>
         <Button className="mt-5" variant="primary">
+          <i class="fa-solid fa-user"></i>
           Check out
         </Button>
       </Container>
