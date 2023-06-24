@@ -5,6 +5,9 @@ export const Login = () => {
   return (
     <div className="loginPage d-flex justify-content-center mt-5">
       <div className="loginForm border shadow p-5 mb-5 bg-body-tertiary rounded">
+        <h3>Login</h3>
+        <hr />
+
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
