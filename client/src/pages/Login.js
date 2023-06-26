@@ -2,8 +2,18 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { MainLayout } from "../components/layout/MainLayout";
+import { useRef } from "react";
 
 export const Login = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    console.log(email, password);
+  };
   return (
     <MainLayout>
       <div className="loginPage d-flex justify-content-center mt-5">
@@ -11,15 +21,23 @@ export const Login = () => {
           <h3>Login</h3>
           <hr />
 
-          <Form>
+          <Form onSubmit={handleOnSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control
+                ref={emailRef}
+                type="email"
+                placeholder="Enter email"
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                ref={passwordRef}
+                type="password"
+                placeholder="Password"
+              />
             </Form.Group>
 
             <Button variant="primary" type="submit">
