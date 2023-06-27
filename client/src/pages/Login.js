@@ -25,6 +25,7 @@ export const Login = () => {
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
+                required
                 ref={emailRef}
                 type="email"
                 placeholder="Enter email"
@@ -34,6 +35,7 @@ export const Login = () => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                required
                 ref={passwordRef}
                 type="password"
                 placeholder="Password"
