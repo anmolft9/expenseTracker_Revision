@@ -5,6 +5,10 @@ import cors from "cors";
 
 const PORT = 8000;
 
+//db connection
+import { connectDB } from "./src/config/dbConfig.js";
+connectDB();
+
 //middleware
 app.use(express.json());
 app.use(cors());
