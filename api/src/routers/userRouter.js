@@ -12,6 +12,10 @@ router.post("/", async (req, res, next) => {
       message: "check email",
     });
   } catch (error) {
+    if (error.message.includes("E11000 duplicate key error collection")) {
+      error.status = 200;
+      error.message = "The email id already exist";
+    }
     next(error);
   }
 });
