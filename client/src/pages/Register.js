@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { MainLayout } from "../components/layout/MainLayout";
 import { useState } from "react";
+import { postNewUser } from "../helpers/axiosHelper";
 
 const initialState = {
   firstName: "",
@@ -23,6 +24,12 @@ export const Register = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     console.log(form);
+
+    const { confirmPassword, ...rest } = form;
+    if (confirmPassword !== rest.password) {
+      return alert("Password doesnot match");
+    }
+    postNewUser(rest);
     setForm(initialState);
   };
   return (
