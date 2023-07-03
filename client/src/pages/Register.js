@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { MainLayout } from "../components/layout/MainLayout";
 import { useState } from "react";
-import { postNewUser } from "../helpers/axiosHelper";
+import { postNewUser } from "../helpers/axiosHelper.js";
 
 const initialState = {
   firstName: "",
@@ -17,7 +17,7 @@ export const Register = () => {
   const [form, setForm] = useState({});
   const handleOnChange = (e) => {
     const { value, name } = e.target;
-    console.log(name, value);
+
     setForm({ ...form, [name]: value });
   };
 
@@ -66,7 +66,7 @@ export const Register = () => {
                 onChange={handleOnChange}
                 type="email"
                 placeholder="Enter email"
-                name="emailId"
+                name="email"
                 value={form.email}
               />
             </Form.Group>

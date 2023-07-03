@@ -1,6 +1,6 @@
 import axios from "axios";
 const rootUrl = "http://localhost:8000";
-const userEP = rootUrl + "api/v1/user";
+const userEP = rootUrl + "/api/v1/user";
 
 export const postNewUser = async (obj) => {
   try {
