@@ -9,7 +9,7 @@ router.post("/", async (req, res, next) => {
     console.log(result);
     res.json({
       status: "success",
-      message: "check email",
+      message: "check email for confirmation",
     });
   } catch (error) {
     if (error.message.includes("E11000 duplicate key error collection")) {

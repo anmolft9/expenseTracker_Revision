@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { MainLayout } from "../components/layout/MainLayout";
 import { useState } from "react";
 import { postNewUser } from "../helpers/axiosHelper.js";
+import { toast } from "react-toastify";
 
 const initialState = {
   firstName: "",
@@ -21,7 +22,7 @@ export const Register = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
 
@@ -29,7 +30,9 @@ export const Register = () => {
     if (confirmPassword !== rest.password) {
       return alert("Password doesnot match");
     }
-    postNewUser(rest);
+    const { status, message } = await postNewUser(rest);
+    toast[status](message);
+
     setForm(initialState);
   };
   return (
