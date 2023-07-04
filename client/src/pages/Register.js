@@ -1,4 +1,5 @@
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { MainLayout } from "../components/layout/MainLayout";
@@ -15,7 +16,8 @@ const initialState = {
 };
 
 export const Register = () => {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState(initialState);
+  const [resp, setResp] = useState({});
   const handleOnChange = (e) => {
     const { value, name } = e.target;
 
@@ -31,9 +33,10 @@ export const Register = () => {
       return alert("Password doesnot match");
     }
     const { status, message } = await postNewUser(rest);
-    toast[status](message);
+    setResp({ status, message });
 
-    setForm(initialState);
+    toast[status](message);
+    status === "success" && setForm(initialState);
   };
   return (
     <MainLayout>
@@ -43,6 +46,12 @@ export const Register = () => {
           <hr />
 
           <Form onSubmit={handleOnSubmit}>
+            {resp.message && (
+              <Alert variant={resp.status === "success" ? "success" : "danger"}>
+                {resp.message}
+              </Alert>
+            )}
+
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>First Name</Form.Label>
               <Form.Control
@@ -96,7 +105,7 @@ export const Register = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Login
+              Register
             </Button>
             <div className="text-end">
               Already have account? <Link to="/login">login</Link>

@@ -6,11 +6,15 @@ const router = express.Router();
 router.post("/", async (req, res, next) => {
   try {
     const result = await insertUser(req.body);
-    console.log(result);
-    res.json({
-      status: "success",
-      message: "check email for confirmation",
-    });
+    result._id
+      ? res.json({
+          status: "success",
+          message: "Registration Successfully",
+        })
+      : res.json({
+          status: "error",
+          message: "Unable to Register",
+        });
   } catch (error) {
     if (error.message.includes("E11000 duplicate key error collection")) {
       error.status = 200;
