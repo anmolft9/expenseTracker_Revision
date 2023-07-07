@@ -1,16 +1,24 @@
 import express from "express";
-import { insertUser } from "../models/userModel/userModel.js";
+import { getOneUser, insertUser } from "../models/userModel/userModel.js";
 
 const router = express.Router();
 
-router.post("/login", (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
-    res.json({
-      status: 200,
-      message: "get method",
-    });
+    const user = await getOneUser({ email });
+
+    user?.password === password
+      ? res.json({
+          status: 200,
+          message: "logged in",
+          user,
+        })
+      : res.json({
+          status: 200,
+          message: "invalid login details",
+        });
   } catch (error) {
     next(error);
   }
