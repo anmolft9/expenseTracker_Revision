@@ -3,6 +3,19 @@ import { insertUser } from "../models/userModel/userModel.js";
 
 const router = express.Router();
 
+router.post("/login", (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+
+    res.json({
+      status: 200,
+      message: "get method",
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post("/", async (req, res, next) => {
   try {
     const result = await insertUser(req.body);
