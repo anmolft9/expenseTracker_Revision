@@ -9,7 +9,7 @@ router.post("/", async (req, res, next) => {
     result._id
       ? res.json({
           status: "success",
-          message: "Registration Successfully",
+          message: "Registration Successful",
         })
       : res.json({
           status: "error",

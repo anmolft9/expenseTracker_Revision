@@ -26,7 +26,6 @@ export const Register = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
 
     const { confirmPassword, ...rest } = form;
     if (confirmPassword !== rest.password) {
