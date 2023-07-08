@@ -15,10 +15,10 @@ export const Login = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    const { status, message, result } = await loginUser({ email, password });
+    const { status, message, user } = await loginUser({ email, password });
     console.log(status, message);
     toast[status](message);
-    status === "success" && localStorage.setItem("user", result);
+    status === "success" && localStorage.setItem("user", JSON.stringify(user));
   };
   return (
     <MainLayout>
