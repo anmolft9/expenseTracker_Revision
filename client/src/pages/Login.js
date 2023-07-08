@@ -3,16 +3,22 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { MainLayout } from "../components/layout/MainLayout";
 import { useRef } from "react";
+import { loginUser } from "../helpers/axiosHelper";
+import { toast } from "react-toastify";
 
 export const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(email, password);
+
+    const { status, message, result } = await loginUser({ email, password });
+    console.log(status, message);
+    toast[status](message);
+    status === "success" && localStorage.setItem("user", result);
   };
   return (
     <MainLayout>

@@ -14,3 +14,15 @@ export const postNewUser = async (obj) => {
     };
   }
 };
+export const loginUser = async (obj) => {
+  try {
+    const response = await axios.post(userEP + "/login", obj);
+
+    return response.data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};

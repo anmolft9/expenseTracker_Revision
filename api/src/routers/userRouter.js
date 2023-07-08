@@ -9,16 +9,19 @@ router.post("/login", async (req, res, next) => {
 
     const user = await getOneUser({ email });
 
-    user?.password === password
-      ? res.json({
-          status: 200,
-          message: "logged in",
-          user,
-        })
-      : res.json({
-          status: 200,
-          message: "invalid login details",
-        });
+    if (user.password === password) {
+      user.password = undefined;
+      res.json({
+        status: "success",
+        message: "logged in",
+        user,
+      });
+    }
+
+    res.json({
+      status: "error",
+      message: "invalid login details",
+    });
   } catch (error) {
     next(error);
   }
