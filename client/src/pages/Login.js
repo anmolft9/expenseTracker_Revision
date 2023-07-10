@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MainLayout } from "../components/layout/MainLayout";
 import { useRef } from "react";
 import { loginUser } from "../helpers/axiosHelper";
@@ -10,6 +10,8 @@ export const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
+  const navigate = useNavigate();
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
@@ -18,7 +20,10 @@ export const Login = () => {
     const { status, message, user } = await loginUser({ email, password });
     console.log(status, message);
     toast[status](message);
-    status === "success" && localStorage.setItem("user", JSON.stringify(user));
+    if (status === "success") {
+      sessionStorage.setItem("user", JSON.stringify(user));
+      navigate("/dashboard");
+    }
   };
   return (
     <MainLayout>
