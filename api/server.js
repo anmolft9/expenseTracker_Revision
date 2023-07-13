@@ -15,7 +15,11 @@ app.use(cors());
 
 ///apis
 import userRouter from "./src/routers/userRouter.js";
+import { transactionRouter } from "./src/routers/transactionRouter.js";
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/transaction", transactionRouter);
+
+///root api point
 app.use("/", (req, res) => {
   try {
     res.send("<h3>coming soon</h3>");
