@@ -27,3 +27,14 @@ export const loginUser = async (obj) => {
     };
   }
 };
+
+export const postNewTransaction = async (obj) => {
+  try {
+    axios.post(userEP + "/transactions", obj);
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
