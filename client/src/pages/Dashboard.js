@@ -4,6 +4,7 @@ import React from "react";
 import { MainLayout } from "../components/layout/MainLayout";
 import { Row } from "react-bootstrap";
 import { TransactionForm } from "../components/form/TransactionForm";
+import { TransactionTable } from "../components/transaction-table/TransactionTable";
 
 export const Dashboard = () => {
   return (
@@ -11,13 +12,16 @@ export const Dashboard = () => {
       <MainLayout>
         <Row>
           <h3 className="text-center mt-4">Dashboard</h3>
+
+          <hr />
+
+          {/* form section */}
+          <TransactionForm />
+          <hr className="mt-5" />
+
+          {/* table section */}
+          <TransactionTable />
         </Row>
-        <hr />
-
-        {/* form section */}
-        <TransactionForm />
-
-        {/* table section */}
       </MainLayout>
     </div>
   );

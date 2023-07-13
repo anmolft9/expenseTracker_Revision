@@ -7,9 +7,10 @@ export const TransactionForm = () => {
   return (
     <div className="mt-5">
       <Form>
+        <h4 className="m-3">Add the Transactions</h4>
         <Row>
           <Col>
-            <Form.Select defaultValue="Transaction Type?">
+            <Form.Select>
               <option value="">Choose...</option>
               <option>Income</option>
               <option>Expense</option>
@@ -19,7 +20,7 @@ export const TransactionForm = () => {
             <Form.Control name="title" placeholder="title" />
           </Col>
           <Col>
-            <Form.Control name="amounts" placeholder="amount" />
+            <Form.Control name="amounts" type="number" placeholder="amount" />
           </Col>
           <Col>
             <Button type="submit">Submit</Button>
