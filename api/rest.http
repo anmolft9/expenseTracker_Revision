@@ -42,3 +42,4 @@ Content-Type: application/json
 
 ###get all the transaction based on their id
 GET http://localhost:8000/api/v1/transaction
+Authorization: 64ac0e2453175396add02890

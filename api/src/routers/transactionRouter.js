@@ -23,19 +23,15 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
-    const result = await addTransaction(req.body);
-    result?._id
-      ? res.json({
-          status: "success",
-          message: "transaction added",
-        })
-      : res.json({
-          status: "failed",
-          message: "unable to add transaction",
-        });
+    const { authorization } = req.headers;
+    console.log(authorization);
+
+    res.json({
+      status: "success",
+      message: "get method",
+    });
   } catch (error) {
     next(error);
   }
 });
-
 export default router;
