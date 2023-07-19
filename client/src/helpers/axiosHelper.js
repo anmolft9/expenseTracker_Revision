@@ -1,6 +1,7 @@
 import axios from "axios";
 const rootUrl = "http://localhost:8000";
 const userEP = rootUrl + "/api/v1/user";
+const transactionEP = rootUrl + "/api/v1/transaction";
 
 export const postNewUser = async (obj) => {
   try {
@@ -28,9 +29,12 @@ export const loginUser = async (obj) => {
   }
 };
 
+/////transaction api
+
 export const postNewTransaction = async (obj) => {
   try {
-    axios.post(userEP + "/transactions", obj);
+    const response = await axios.post(transactionEP, obj);
+    return response.data;
   } catch (error) {
     return {
       status: "error",

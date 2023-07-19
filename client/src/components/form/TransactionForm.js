@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import { postNewTransaction } from "/Users/anmolbhattarai/Desktop/Projects/Dented Bootcamp/Revision/Revision-back/Expense-Tracker/client/src/helpers/axiosHelper.js";
+import { toast } from "react-toastify";
 
 export const TransactionForm = () => {
   const [transaction, setTransaction] = useState({});
@@ -12,9 +14,16 @@ export const TransactionForm = () => {
     setTransaction({ ...transaction, [name]: value });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(transaction);
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    console.log(user);
+    const userId = user._id;
+    const { status, message } = await postNewTransaction({
+      ...transaction,
+      userId,
+    });
+    toast[status](message);
   };
 
   return (
