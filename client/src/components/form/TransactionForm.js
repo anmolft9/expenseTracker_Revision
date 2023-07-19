@@ -23,7 +23,11 @@ export const TransactionForm = () => {
         <h4 className="m-3">Add the Transactions</h4>
         <Row className="g-2">
           <Col md="2">
-            <Form.Select name="transactionType" onChange={handleOnChange}>
+            <Form.Select
+              name="transactionType"
+              onChange={handleOnChange}
+              required
+            >
               <option value="">Choose...</option>
               <option>Income</option>
               <option>Expense</option>
@@ -34,6 +38,7 @@ export const TransactionForm = () => {
               onChange={handleOnChange}
               name="title"
               placeholder="title"
+              required
             />
           </Col>
           <Col md="4">
@@ -42,6 +47,7 @@ export const TransactionForm = () => {
               name="amounts"
               type="number"
               placeholder="amount"
+              required
             />
           </Col>
           <Col md="2">

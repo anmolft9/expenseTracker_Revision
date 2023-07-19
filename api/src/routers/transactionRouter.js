@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.post("/", async (req, res, next) => {
   try {
-    console.log("asdasd");
     const result = await addTransaction(req.body);
     result?._id
       ? res.json({
