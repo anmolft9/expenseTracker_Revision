@@ -10,7 +10,7 @@ export const TransactionForm = () => {
   const [transaction, setTransaction] = useState({});
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    // console.log(name, value);
+
     setTransaction({ ...transaction, [name]: value });
   };
 
