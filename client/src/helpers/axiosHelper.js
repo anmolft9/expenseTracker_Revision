@@ -42,3 +42,23 @@ export const postNewTransaction = async (obj) => {
     };
   }
 };
+
+export const getTransaction = async (obj) => {
+  try {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    const userId = user._id;
+
+    const response = await axios.post(transactionEP, obj, {
+      headers: {
+        authorization: userId,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};

@@ -17,7 +17,7 @@ export const TransactionForm = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const user = JSON.parse(sessionStorage.getItem("user"));
-    console.log(user);
+
     const userId = user._id;
     const { status, message } = await postNewTransaction({
       ...transaction,
