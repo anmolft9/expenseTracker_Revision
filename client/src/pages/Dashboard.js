@@ -18,7 +18,7 @@ export const Dashboard = () => {
     const { status, message, trans } = await getTransaction();
     status === "success" && trans.length && setTransactions(trans);
   };
-  console.log(transactions);
+  // console.log(transactions);
 
   return (
     <div>
@@ -33,7 +33,7 @@ export const Dashboard = () => {
           <hr className="mt-5" />
 
           {/* table section */}
-          <TransactionTable />
+          <TransactionTable transactions={transactions} />
         </Row>
       </MainLayout>
     </div>
