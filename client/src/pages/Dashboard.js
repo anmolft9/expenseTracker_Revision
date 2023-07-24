@@ -15,9 +15,10 @@ export const Dashboard = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await getTransaction();
-    console.log(data);
+    const { status, message, trans } = await getTransaction();
+    status === "success" && trans.length && setTransactions(trans);
   };
+  console.log(transactions);
 
   return (
     <div>
