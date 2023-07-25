@@ -47,3 +47,4 @@ Authorization: 64ac0e2453175396add02890
 
 ###delete a transaction
 DELETE http://localhost:8000/api/v1/transaction/64b7da786d191cd589aa1b57
+Authorization: 64ac0e2453175396add02890

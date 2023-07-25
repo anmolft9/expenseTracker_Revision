@@ -41,9 +41,9 @@ export const Dashboard = () => {
     if (!window.confirm("Are you sure you want to delete this transaction")) {
       return;
     }
-    console.log(_id);
 
     const { status, message } = await deleteTransaction(_id);
+    status === "success" && fetchData();
     toast[status](message);
   };
 

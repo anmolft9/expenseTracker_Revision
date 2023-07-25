@@ -69,7 +69,7 @@ export const deleteTransaction = async (_id) => {
 
     const userId = user._id;
 
-    const response = await axios.get(transactionEP, {
+    const response = await axios.delete(transactionEP + "/" + _id, {
       headers: {
         authorization: userId,
       },
