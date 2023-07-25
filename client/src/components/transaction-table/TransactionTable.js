@@ -1,6 +1,9 @@
 import Table from "react-bootstrap/Table";
 
 export const TransactionTable = ({ transactions }) => {
+  const total = transactions.reduce((acc, { transactionType, amounts }) => {
+    return transactionType === "Income" ? acc + amounts : acc - amounts;
+  }, 0);
   return (
     <>
       <Table striped bordered hover>
@@ -28,7 +31,7 @@ export const TransactionTable = ({ transactions }) => {
             ))}
         </tbody>
       </Table>
-      <div className="text-end fw-bold">Total Balance : $280</div>
+      <div className="text-end fw-bold">Total Balance : ${total}</div>
     </>
   );
 };
