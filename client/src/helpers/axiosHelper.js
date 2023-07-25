@@ -18,7 +18,6 @@ export const postNewUser = async (obj) => {
 export const loginUser = async (obj) => {
   try {
     const response = await axios.post(userEP + "/login", obj);
-    console.log(response);
 
     return response.data;
   } catch (error) {
@@ -44,6 +43,27 @@ export const postNewTransaction = async (obj) => {
 };
 
 export const getTransaction = async () => {
+  try {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    const userId = user._id;
+
+    const response = await axios.get(transactionEP, {
+      headers: {
+        authorization: userId,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+///delete transaction
+export const deleteTransaction = async (_id) => {
   try {
     const user = JSON.parse(sessionStorage.getItem("user"));
 

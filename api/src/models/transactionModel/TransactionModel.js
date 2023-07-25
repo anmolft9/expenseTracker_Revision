@@ -9,3 +9,8 @@ export const addTransaction = (obj) => {
 export const getTransaction = (filter) => {
   return TransactionSchema.find(filter);
 };
+
+//delete transaction
+export const deleteTransaction = (filter) => {
+  return TransactionSchema.findOneAndDelete(filter);
+};
