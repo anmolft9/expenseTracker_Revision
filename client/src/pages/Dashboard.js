@@ -12,7 +12,7 @@ import {
 } from "../helpers/axiosHelper.js";
 import { toast } from "react-toastify";
 
-export const Dashboard = () => {
+export const Dashboard = ({ isLoggedIn }) => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const Dashboard = () => {
 
   return (
     <div>
-      <MainLayout>
+      <MainLayout isLoggedIn={isLoggedIn}>
         <Row>
           <h3 className="text-center mt-4">Dashboard</h3>
 

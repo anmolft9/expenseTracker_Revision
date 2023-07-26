@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { loginUser } from "../helpers/axiosHelper";
 import { toast } from "react-toastify";
 
-export const Login = () => {
+export const Login = ({ setLoggedIn }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
@@ -18,13 +18,15 @@ export const Login = () => {
     const password = passwordRef.current.value;
 
     const { status, message, user } = await loginUser({ email, password });
-    console.log(status, message);
+
     toast[status](message);
     if (status === "success") {
-      sessionStorage.setItem("user", JSON.stringify(user));
+      window.sessionStorage.setItem("user", JSON.stringify(user));
+      setLoggedIn(true);
       navigate("/dashboard");
     }
   };
+
   return (
     <MainLayout>
       <div className="loginPage d-flex justify-content-center mt-5">
