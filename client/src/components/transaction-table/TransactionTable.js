@@ -41,7 +41,9 @@ export const TransactionTable = ({ transactions, handleOnDelete }) => {
             ))}
         </tbody>
       </Table>
-      <div className="text-end fw-bold">Total Balance : ${total}</div>
+      <div className="text-end fw-bold text-success">
+        Total Balance : ${total}
+      </div>
     </>
   );
 };
